@@ -69,7 +69,10 @@ const Close: React.FC<CloseProps> = ({
   refreshing,
   refreshHandler,
 }) => {
-  const closeHandler = () => {
+  const closeHandler = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    event.preventDefault();
     setModalVisibility(false);
 
     if (refreshing && refreshHandler) {
@@ -78,13 +81,12 @@ const Close: React.FC<CloseProps> = ({
   };
 
   return (
-    <Link
-      to={""}
+    <button
       className="teaui cta level-tertiary format-icon-only size-large modal-close"
       onClick={closeHandler}
     >
       <i className="icon teaui-icon-cross"></i>
-    </Link>
+    </button>
   );
 };
 Modal.Close = Close;
@@ -179,15 +181,15 @@ const NavigationItem: React.FC<NavigationItemProps> = ({
   id,
 }) => {
   return (
-    <Link
-      to={""}
-      onClick={() => {
+    <button
+      onClick={(event) => {
+        event.preventDefault();
         setModalPage(id);
       }}
       className={isActive ? "active" : ""}
     >
       {label}
-    </Link>
+    </button>
   );
 };
 Modal.Navigation.Item = NavigationItem;
