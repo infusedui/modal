@@ -8,26 +8,25 @@ import {
   ModalContainerProps,
   ModalProps,
   NavigationItemProps,
+  NavigationProps,
   TitleProps,
 } from "./Modal.types";
 
 const Modal: React.FC<ModalProps> & {
   Background: React.FC<CloseProps>;
   Body: React.FC<BodyProps>;
-  Title?: React.FC<TitleProps>;
-  Close?: React.FC<CloseProps>;
-  MenuLeft?: React.FC<ModalContainerProps>;
-  MenuRight?: React.FC<ModalContainerProps>;
-  ModalCenter?: React.FC<ModalContainerProps>;
-  Navigation?: React.FC<BodyProps> & {
-    Item?: React.FC<NavigationItemProps>;
+  Title: React.FC<TitleProps>;
+  Close: React.FC<CloseProps>;
+  MenuLeft: React.FC<ModalContainerProps>;
+  MenuRight: React.FC<ModalContainerProps>;
+  ModalCenter: React.FC<ModalContainerProps>;
+  Navigation: React.FC<NavigationProps> & {
+    Item: React.FC<NavigationItemProps>;
   };
-  Pages?: React.FC<BodyProps>;
+  Pages: React.FC<BodyProps>;
 } = ({ children }) => {
   return <motion.div className="teaui modal">{children}</motion.div>;
 };
-
-export default Modal;
 
 const Background: React.FC<CloseProps> = ({
   setModalVisibility,
@@ -69,7 +68,10 @@ const Close: React.FC<CloseProps> = ({
   refreshing,
   refreshHandler,
 }) => {
-  const closeHandler = () => {
+  const closeHandler = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    event.preventDefault();
     setModalVisibility(false);
 
     if (refreshing && refreshHandler) {
@@ -78,13 +80,12 @@ const Close: React.FC<CloseProps> = ({
   };
 
   return (
-    <Link
-      to={""}
+    <button
       className="teaui cta level-tertiary format-icon-only size-large modal-close"
       onClick={closeHandler}
     >
       <i className="icon teaui-icon-cross"></i>
-    </Link>
+    </button>
   );
 };
 Modal.Close = Close;
@@ -163,7 +164,9 @@ const Body: React.FC<BodyProps> = ({ children }) => {
 };
 Modal.Body = Body;
 
-const Navigation: React.FC<BodyProps> = ({ children }) => {
+const Navigation: React.FC<NavigationProps> & {
+  Item: React.FC<NavigationItemProps>;
+} = ({ children }) => {
   return (
     <div className="teaui padding-16-all">
       <nav className="teaui tab-nav tab-size-full">{children}</nav>
@@ -179,20 +182,22 @@ const NavigationItem: React.FC<NavigationItemProps> = ({
   id,
 }) => {
   return (
-    <Link
-      to={""}
-      onClick={() => {
+    <button
+      onClick={(event) => {
+        event.preventDefault();
         setModalPage(id);
       }}
       className={isActive ? "active" : ""}
     >
       {label}
-    </Link>
+    </button>
   );
 };
-Modal.Navigation.Item = NavigationItem;
+Navigation.Item = NavigationItem;
 
 const Pages: React.FC<BodyProps> = ({ children }) => {
   return <AnimatePresence>{children}</AnimatePresence>;
 };
 Modal.Pages = Pages;
+
+export default Modal;
