@@ -1,10 +1,10 @@
 {
   "name": "@infusedui/modal",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/types.d.ts",
   "files": [
     "dist"
   ],
