@@ -22,6 +22,10 @@ export interface BodyProps {
   children: React.ReactNode;
 }
 
+export interface NavigationProps {
+  children: React.ReactNode;
+}
+
 export interface NavigationItemProps {
   label: string;
   setModalPage: React.Dispatch<React.SetStateAction<string | number>>;
