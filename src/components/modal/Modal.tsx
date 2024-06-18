@@ -168,7 +168,7 @@ const Navigation: React.FC<NavigationProps> & {
   Item: React.FC<NavigationItemProps>;
 } = ({ children }) => {
   return (
-    <div className="teaui padding-16-all">
+    <div className="teaui padding-16-all ms-padding-16-all xs-padding-16-all">
       <nav className="teaui tab-nav tab-size-full">{children}</nav>
     </div>
   );
