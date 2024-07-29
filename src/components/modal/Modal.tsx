@@ -56,9 +56,7 @@ Modal.Background = Background;
 
 const Title: React.FC<TitleProps> = ({ children }) => {
   return (
-    <div className="teaui modal-header margin-48-top-negative ms-margin-48-top-negative xs-margin-48-top-negative">
-      {children}
-    </div>
+    <div className="teaui modal-header mtn48 ms-mtn48 xs-mtn48">{children}</div>
   );
 };
 Modal.Title = Title;
@@ -157,9 +155,7 @@ Modal.ModalCenter = ModalCenter;
 
 const Body: React.FC<BodyProps> = ({ children }) => {
   return (
-    <div className="teaui modal-content padding-16-all ms-padding-16-all xs-padding-16-all">
-      {children}
-    </div>
+    <div className="teaui modal-content pa16 ms-pa16 xs-pa16">{children}</div>
   );
 };
 Modal.Body = Body;
@@ -168,7 +164,7 @@ const Navigation: React.FC<NavigationProps> & {
   Item: React.FC<NavigationItemProps>;
 } = ({ children }) => {
   return (
-    <div className="teaui padding-16-all ms-padding-16-all xs-padding-16-all">
+    <div className="teaui pa16 ms-pa16 xs-pa16">
       <nav className="teaui tab-nav tab-size-full">{children}</nav>
     </div>
   );
