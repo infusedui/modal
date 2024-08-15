@@ -56,9 +56,7 @@ Modal.Background = Background;
 
 const Title: React.FC<TitleProps> = ({ children }) => {
   return (
-    <div className="teaui modal-header margin-48-top-negative ms-margin-48-top-negative xs-margin-48-top-negative">
-      {children}
-    </div>
+    <div className="teaui modal-header mtn48 ms-mtn48 xs-mtn48">{children}</div>
   );
 };
 Modal.Title = Title;
@@ -81,7 +79,7 @@ const Close: React.FC<CloseProps> = ({
 
   return (
     <button
-      className="teaui cta level-tertiary format-icon-only size-large modal-close"
+      className="teaui cta level-tertiary format-icon-only size-large sl modal-close"
       onClick={closeHandler}
     >
       <i className="icon teaui-icon-cross"></i>
@@ -98,7 +96,7 @@ const MenuLeft: React.FC<ModalContainerProps> = ({ children, size }) => {
       exit={{ opacity: 0, x: -100 }}
       transition={{ ease: "easeOut", duration: 0.3 }}
       className={`teaui modal-container format-menu position-left ${
-        size ? `size-${size}` : ""
+        size ? `size-${size} ${size}` : ""
       }`}
     >
       <SimpleBar style={{ maxHeight: "100vh" }}>{children}</SimpleBar>
@@ -115,7 +113,7 @@ const MenuRight: React.FC<ModalContainerProps> = ({ children, size }) => {
       exit={{ opacity: 0, x: 100 }}
       transition={{ ease: "easeOut", duration: 0.3 }}
       className={`teaui modal-container format-menu position-right ${
-        size ? `size-${size}` : ""
+        size ? `size-${size} ${size}` : ""
       }`}
     >
       <SimpleBar style={{ maxHeight: "100vh" }}>{children}</SimpleBar>
@@ -145,7 +143,7 @@ const ModalCenter: React.FC<ModalContainerProps> = ({
       initial={{ opacity: 0, y: -100 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -100 }}
-      className={`teaui modal-container ${size ? `size-${size}` : ""}`}
+      className={`teaui modal-container ${size ? `size-${size} ${size}` : ""}`}
     >
       <SimpleBar style={{ maxHeight: returnMaxSizeScroll() }}>
         {children}
@@ -157,9 +155,7 @@ Modal.ModalCenter = ModalCenter;
 
 const Body: React.FC<BodyProps> = ({ children }) => {
   return (
-    <div className="teaui modal-content padding-16-all ms-padding-16-all xs-padding-16-all">
-      {children}
-    </div>
+    <div className="teaui modal-content pa16 ms-pa16 xs-pa16">{children}</div>
   );
 };
 Modal.Body = Body;
@@ -168,7 +164,7 @@ const Navigation: React.FC<NavigationProps> & {
   Item: React.FC<NavigationItemProps>;
 } = ({ children }) => {
   return (
-    <div className="teaui padding-16-all">
+    <div className="teaui pa16 ms-pa16 xs-pa16">
       <nav className="teaui tab-nav tab-size-full">{children}</nav>
     </div>
   );
