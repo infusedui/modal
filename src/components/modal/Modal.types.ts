@@ -14,7 +14,7 @@ export interface TitleProps {
 
 export interface ModalContainerProps {
   children: React.ReactNode;
-  size?: "small" | "medium" | "large" | "fullscreen";
+  size?: "small" | "medium" | "large" | "fullscreen" | "sl" | "sm";
   template?: "menu" | undefined;
 }
 
