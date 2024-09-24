@@ -129,7 +129,7 @@ const ModalCenter: React.FC<ModalContainerProps> = ({
 }) => {
   const returnMaxSizeScroll = () => {
     if (size === "fullscreen") {
-      return "100vh";
+      return "calc(100vh - 32px)";
     }
     if (template === "menu") {
       return "100vh";
