@@ -16,6 +16,7 @@ export interface ModalContainerProps {
   children: React.ReactNode;
   size?: "small" | "medium" | "large" | "fullscreen" | "sl" | "sm" | "sf";
   template?: "menu" | undefined;
+  direction?: "top" | "bottom";
 }
 
 export interface BodyProps {

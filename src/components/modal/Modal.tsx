@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
@@ -126,6 +125,7 @@ const ModalCenter: React.FC<ModalContainerProps> = ({
   children,
   size,
   template,
+  direction = "top",
 }) => {
   const returnMaxSizeScroll = () => {
     if (size === "fullscreen") {
@@ -140,9 +140,10 @@ const ModalCenter: React.FC<ModalContainerProps> = ({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: -100 }}
+      initial={{ opacity: 0, y: direction === "top" ? -100 : 100 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -100 }}
+      exit={{ opacity: 0, y: direction === "top" ? -100 : 100 }}
+      transition={{ ease: "easeOut", duration: 0.3 }}
       className={`teaui modal-container ${size ? `size-${size} ${size}` : ""}`}
     >
       <SimpleBar style={{ maxHeight: returnMaxSizeScroll() }}>
